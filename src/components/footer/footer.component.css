@@ -1,0 +1,32 @@
+.footer{
+    background-color: #1c1c1c;
+}
+.yellow-color{
+    color: #f1bc2d;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+.footer-link a, .footer-link a:hover{
+    color: #d9d7d7;
+    text-decoration: none;
+      
+}
+.footer-link{
+    display: inline-grid;
+    font-weight: bold;
+    font-size: 13px;
+
+}
+.in-class{
+    background: #1c1c1c;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #f1bc2d;
+}
+.app-img{
+    width: 40%;
+    
+}
