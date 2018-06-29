@@ -1,7 +1,7 @@
 .header1{
     height: 30px;
     background-color: #e4e4e4;
-   
+
     font-size: 12;
 }
 a{
@@ -9,13 +9,53 @@ a{
 }
 
 
-.dropdown:hover .dropdown-menu {
+ .dropdown:hover .dropdown-menu {
     display: block;
-     min-height: 400px;
-   float: left;
-   width: 500px;
+    position: fixed;
+    top: 86px;
+    left: 76px;
+    width: 90%;
+    min-height: 300px;
 }
 
-.navbar-brand{
+
+.navbar .container-fluid .navbar-brand{
     font-size: 25px;
+    margin-left: 26px;
+}
+.dropdown-menu{
+  left:0;
+} 
+td{
+   padding-top: 20px;
+    padding-right: 27px;
+    padding-left: 50px;
+}
+th{
+    padding-top: 50px;
+    padding-left: 50px;
+}
+.listimg{
+    height: 60px;
+    width: 60px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.glyphicon.glyphicon-shopping-cart,.glyphicon.glyphicon-heart-empty{
+   font-size: 25px;
+}
+
+.navbar-nav>li>a {
+    padding-top: 16px;
+    padding-bottom: 11px;
+    font-size: 18px;
+}
+.borderside{
+    border-right: 2px solid red;
+    padding-left: 450px;
+    height: 40%;
+}
+.glyphicon.glyphicon-search{
+    font-size: 25px;
+    
 }
