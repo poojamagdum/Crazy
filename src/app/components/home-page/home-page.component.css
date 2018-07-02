@@ -1,0 +1,19 @@
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 2px solid orange;
+    width: 132px;
+}
+.discount{
+    margin-top: -156px;
+    margin-left: 37px;
+    background-color: white;
+    position: absolute;
+    width: 275px;
+   
+}
+a{
+    color: black;
+    text-align: center;
+}
