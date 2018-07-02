@@ -10,14 +10,16 @@ import { HttpClient } from "@angular/common/http";
 export class WomenPageComponent implements OnInit {
 data:Array<any>=[];
   constructor(private ws:WomenService) { 
-    ws.getData().subscribe(d=>{
+    this.ws.getData().subscribe(d=>{
       this.data=d;
+      
     })
-   console.log(this.data)
   }
-
+  
+  
   ngOnInit() {
- 
+   
   }
+  
 
 }
