@@ -1,0 +1,15 @@
+[{
+    "imgPath":"../assets/images/app_ios_v1.png",
+    "title":"",
+    "prize":"700",
+    "off":false,
+    "offRange":0.5
+},
+{
+    "imgPath":"1.jpg",
+    "title":"",
+    "prize":"700",
+    "off":false,
+    "offRange":0.5
+}
+]
