@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $:any;
 
 @Component({
   selector: 'app-header',
@@ -11,5 +12,26 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
+  ngAfterViewInit(){
 
+    $(document).ready(function(){
+     $("#loginpage").click(function(){
+      $("#form1").show();
+      $("#form2").hide();
+     });
+      $("#login").click(function(){
+      $("#form2").hide();
+      $("#form1").show();
+      });
+      $("#signup").click(function(){
+        $("#form1").hide();
+        $("#form2").show();
+        });
+        $("#signuppage").click(function(){
+          $("#form2").show();
+          $("#form1").hide();
+        });
+    });
+}
+ 
 }
