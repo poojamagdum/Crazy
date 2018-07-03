@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit() {
-    var countDownDate = new Date("Jul 2, 2018 18:37:25").getTime();
+    var countDownDate = new Date("Jul 4, 2018 18:37:25").getTime();
     var x = setInterval(function() {
 
       // Get todays date and time

@@ -215,13 +215,13 @@
                 <div class="modal-title">
                   <ul class="nav navbar-nav">
                     <li>
-                      <a href="#" id="login">
+                      <a href="#" (click)="hideform1='';hideform2='none'">
                         <h5>Login</h5>
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" id="signup">
+                      <a href="#" (click)="hideform2='';hideform1='none'">
                         <h5>Sign Up</h5>
                       </a>
                     </li>
@@ -231,29 +231,36 @@
               </div>
               <div class="modal-body">
                
-                  <form id="form1"> 
+                  <form id="form1" style.display={{hideform1}}> 
                       <br>
                       <br><br>
                       <div class="row">
                         <div class="col-md-3 centeralign">
                             <div class="group">      
-                                <input type="text" required>
+                                <input type="text" required name="username" [(ngModel)]="localUser.username" >
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Email</label>
                               </div>
-                              <button  type="button" class="btn btn-primary btn-lg">Continue</button>
+                              <div id="password" class="group">      
+                                <input style.display={{hidePass}} type="text" required name="password" [(ngModel)]="localUser.password" >
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label style.display={{hidePass}}>Password</label>
+                              </div>
+                              <button  type="Sumbit" style.display={{hideLogin}} id="Login" data-dismiss="modal" (click)='login();' class="btn btn-primary btn-lg">Login</button>
+                              <button  type="button" id="continue"  style.display={{hideCont}} (click)="hidePass='';hideLogin='';hideCont='none'" class="btn btn-primary btn-lg">Continue</button>
                         </div>
                     
                       </div>
                    
                       
                     </form>
-                    <form id="form2"> 
+                    <form id="form2" style.display={{hideform2}}> 
                         <div class="row">
                           <div class="col-md-3 centeralign">
                               <div class="group">      
-                                  <input type="text" required>
+                                  <input type="text" required  name="fullname" [(ngModel)]="localUser.fullname">
                                   <span class="highlight"></span>
                                   <span class="bar"></span>
                                   <label>Full&nbsp;Name</label>
@@ -265,7 +272,7 @@
                           <div class="row">
                               <div class="col-md-3 centeralign">
                                   <div class="group">      
-                                      <input type="text" required>
+                                      <input type="text" required name="username" [(ngModel)]="localUser.username">
                                       <span class="highlight"></span>
                                       <span class="bar"></span>
                                       <label>Email Id</label>
@@ -276,7 +283,7 @@
                             <div class="row">
                                 <div class="col-md-3 centeralign">
                                     <div class="group">      
-                                        <input type="text" required>
+                                        <input type="text" required name="password" [(ngModel)]="localUser.password">
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Password</label>
@@ -287,7 +294,7 @@
                               <div class="row">
                                   <div class="col-md-3 centeralign">
                                       <div class="group">      
-                                          <input type="text" required>
+                                          <input type="text" required name="mobile" [(ngModel)]="localUser.mobile">
                                           <span class="highlight"></span>
                                           <span class="bar"></span>
                                           <label>Mobile</label>
@@ -298,12 +305,12 @@
                                 <div class="row">
                                     <div class="col-md-3 centeralign">
                                         <div class="group">      
-                                            <input type="text" required>
+                                            <input type="text" required name="gender" [(ngModel)]="localUser.gender">
                                             <span class="highlight"></span>
                                             <span class="bar"></span>
                                             <label>Gender</label>
                                           </div>
-                                          <button  type="button" class="btn btn-primary btn-lg">Sign Up</button>
+                                          <button  type="button" (click)="signUp()"class="btn btn-primary btn-lg">Sign Up</button>
                                     </div>
                                 
                                   </div>
@@ -321,7 +328,7 @@
                 <span>Or Login /Sign Up With</span><br><br>
                   <button type="button" class="btn btn-primary">Facebook</button>
                   <button type="button" class="btn btn-danger">Google</button>
-                  <h4>New User?<a href="#" id="signuppage">Sign Up</a></h4>
+                  <h4>New User?<a href="#" (click)="hideform2='';hideform1='none'">Sign Up</a></h4>
               </div>
             </div>
 

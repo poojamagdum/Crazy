@@ -1,0 +1,16 @@
+[
+    {
+        "username":"admin",
+        "password":"admin",
+        "fullname":"",
+        "mobile":"",
+        "gender":""
+    },
+    {
+        "username":"admin1",
+        "password":"admin",
+        "fullname":"",
+        "mobile":"",
+        "gender":""
+    }
+]
