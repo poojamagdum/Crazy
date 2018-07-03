@@ -1,6 +1,21 @@
-<div class="row">
-  <div class="col-sm-3" *ngFor="let p of data">
-   {{p.imgPath}}
-    <img src'' alt="">
+<div class="container">
+  <div class="row" style="text-align: center;">
+    <h2>New Arrivals Men</h2>
   </div>
-</div>
+<div class="row">
+  <div class="col-sm-2">
+
+  </div>
+  <div class="col-sm-10">
+    <div class="row">
+      <div class="col-sm-4"  *ngFor="let p of data">
+        <a href=""><img src={{p.imgPath}} alt=""></a>
+        <p>{{p.title}}</p>
+        <b *ngIf="p.off==true">{{p.prize*p.offRange}}</b>
+        <b>{{p.prize}}</b>
+
+      </div>
+    </div>
+
+  </div>
+</div></div>
