@@ -194,9 +194,28 @@
 
           </li>
           <li>
-            <a href="#" id="loginpage" data-toggle="modal" data-target="#myModal">Login
-              <span class="glyphicon glyphicon-heart-empty"></span>
-            </a>
+            <a href="#" id="loginpage"  data-toggle="modal" data-target="#myModal">{{hideLoginLink}}
+              <span *ngIf="this.toggle==1" class="glyphicon glyphicon-heart-empty"></span>
+              
+                <div class="dropdown">
+                  <span *ngIf="this.toggle==0"class="glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown">   </span>  
+                    <ul class="dropdown-menu">
+                      <li><a href="">Hi, {{this.localUser.username}}</a></li>
+                      <li><a href="#"><b>My Account</b></a></li>
+                      <li><a href="#"><b>My Wishlist</b></a></li>
+                      <li><a href="#"><b>My Orders</b></a></li>
+                      <li><a href="#"><b>Logout</b></a></li>
+
+                    </ul>
+               
+                </div>
+         
+             </a>
+          </li>
+          <li>
+            <a href="#">
+               <span *ngIf="this.toggle==0" class="glyphicon glyphicon-heart-empty"></span>
+             </a>
           </li>
           <li>
             <a href="#">
@@ -204,7 +223,7 @@
             </a>
           </li>
         </ul>
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="myModal" style.display={hideLoginmodal} role="dialog">
           <div class="modal-dialog">
 
             <!-- Modal content-->

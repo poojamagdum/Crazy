@@ -24,6 +24,14 @@ sup {
     min-height: 300px;
 }
 
+a .dropdown:hover .dropdown-menu {
+    display: block;
+    position: fixed;
+    top: 86px;
+   right: 10px;
+    width: 40%;
+    min-height: 100px;
+}
 
 .navbar .container-fluid .navbar-brand{
     font-size: 25px;

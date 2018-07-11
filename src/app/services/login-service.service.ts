@@ -1,43 +1,31 @@
-import { HttpClient } from '@angular/common/http';
-import {Injectable} from '@angular/core'
-import {BehaviorSubject} from 'rxjs/BehaviorSubject'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { Observable } from "rxjs/Observable";
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
 
 @Injectable()
-export class LoginService{
-  c:Array<any>;
-  data:BehaviorSubject<any> = new BehaviorSubject(this.c);
-  constructor(private http:HttpClient){      
-     this.http.get('../assets/json/loginDetails.json').subscribe(d=>{
-        this.data.next(d);
-      })
-   
+export class LoginService {
+  c: Array<any>;
+  data: BehaviorSubject<any> = new BehaviorSubject(this.c);
+  constructor(private http: HttpClient) {
   }
-  
-
-  getData():Observable<any>{
-      return this.data.asObservable()
+  getData(localUser): Observable<any> {
+    return this.http.get('http://127.0.0.1:3000/ping', {
+      params: {
+        username: '' + localUser.username,
+        password: '' + localUser.password
+      }
+    });
   }
-  putData(localUser){
-   /*  console.log("inside");
-    this.http.post('../assets/json/loginDetails.json',{
-      localUser
-    }); */
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let body = JSON.stringify(localUser);
-    this.data.subscribe(d=>{
-      d.push(localUser);
-console.log(d)
-    })
+  putData(localUser): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+    return this.http.post('http://127.0.0.1:3000/ping', JSON.stringify(localUser), {
+      headers: headers
+    });
 
-    this.http.post('../assets/json/loginDetails.json', this.data );
-       
   }
-
-
-
- 
-  }
+}
