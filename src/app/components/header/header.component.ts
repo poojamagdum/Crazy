@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login-service.service';
 import { Router } from '@angular/router';
-declare var $:any;
+import { RequestOptions } from '@angular/http';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -10,73 +13,49 @@ declare var $:any;
 
 })
 export class HeaderComponent implements OnInit {
-  localUser={
-    username:'',
-    password:'',
-    fullname:'',
-    mobile:'',
-    gender:''
-  }
-  hideLogin:string='none';
-  hideCont:string='';
-  hidePass:string='none';
-  hideLoginBlk:string=''
-  hideLoginmodal:string='none';
-  hideform1:string='';
-  hideform2:string='none';
-  
 
-  i:number;
-    data:Array<any>=[];
-    
-  constructor(private _loginservice:LoginService,private _router:Router) { 
- 
+  localUser = {
+    username: '',
+    password: '',
+    fullname: '',
+    mobile: '',
+    gender: ''
   }
-  login(){
-        this._loginservice.getData().subscribe(d=>{
-        this.data=d;
-    
-        
-      })
-      console.log(this.localUser.password);
-      for( this.i=0;this.i<this.data.length;this.i++){
-            console.log(this.data[this.i]);
-            if(this.data[this.i].username==this.localUser.username){
-                this._router.navigate(['/women-page']);
-            }
+  hideLogin: string = 'none';
+  hideCont: string = '';
+  hidePass: string = 'none';
+  hideLoginBlk: string = ''
+  hideLoginmodal: string = 'none';
+  hideform1: string = '';
+  hideform2: string = 'none';
+  hideLoginLink:string='Login';
+
+  i: number;
+  data: Array<any> = [];
+  toggle:number=1;
+  constructor(private _loginservice: LoginService, private _router: Router, private http: HttpClient) {
+
+  }
+  login() {
+    this._loginservice.getData(this.localUser).subscribe(d => {
+      if (d.found == "true") {
+        console.log("login success");
+        this.toggle=0;
+        this.hideLoginLink='';
       }
-      this.hideLoginBlk="none"
-  }
-  signUp(){
-    this._loginservice.putData(this.localUser)
+      else {
 
+        console.log("login failure");
+      }
+    })
   }
+  signUp() {
+    this._loginservice.putData(this.localUser).subscribe(res => {
+      console.log("from post" + res);
+      this.hideLoginmodal = "none";
+    })
+  }
+ 
   ngOnInit() {
   }
-
-  ngAfterViewInit(){
-
-    // $(document).ready(function(){
-    //  $("#loginpage").click(function(){
-    //   $("#form1").show();
-    //   $("#form2").hide();
-     
-
-    //  });
-    
-    //   $("#login").click(function(){
-    //   $("#form2").hide();
-    //   $("#form1").show();
-    //   });
-    //   $("#signup").click(function(){
-    //     $("#form1").hide();
-    //     $("#form2").show();
-    //     });
-    //     $("#signuppage").click(function(){
-    //       $("#form2").show();
-    //       $("#form1").hide();
-    //     });
-    // });
-}
- 
 }
