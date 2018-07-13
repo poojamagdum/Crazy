@@ -13,21 +13,26 @@ data:Array<any>=[];
 hideImg:string='none'
 imgOne:string;
   constructor(private ws:WomenService) { 
-    this.ws.getData().subscribe(d=>{
-      this.data=d;
-      
-    })
+    if(this.data!=undefined)
+    console.log("inside constructor")
+    this.changeImage();
   }
   
-  changeImage(){
-    
-   
-  }
+  
   
   ngOnInit() {
-   
+    this.ws.getData().subscribe(d=>{
+      console.log("inside nginit",d)
+      if(d!=undefined)
+      this.data=d;
+    })
+    
   }
-  ngAfterViewInit(){
+  changeImage(){
+    
+    console.log(this.data.filter(i=>i.prize>700))
+   }
+  ngAfterViewInit(){console.log(this.data)
     var prev;
         $(document).ready(function(){
           $('img').hover(function(){

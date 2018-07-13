@@ -9,8 +9,9 @@ export class WomenService{
   c:Array<any>;
   data:BehaviorSubject<any> = new BehaviorSubject(this.c);
   constructor(private http:HttpClient){      
-     this.http.get('../assets/json/women.json').subscribe(d=>{
+     this.http.get('http://127.0.0.1:3000/women').subscribe(d=>{
         this.data.next(d);
+        
       })
    
   }
