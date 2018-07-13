@@ -33,7 +33,7 @@
 },
 {
     "imgPath":["../assets/images/2-1.png","../assets/images/2-2.png","../assets/images/2-3.png","../assets/images/2-4.png"],    "title":"Possible Full Sleeve T-Shirt",
-    "prize":"700",
+    "prize":"800",
     "off":true,
     "offRange":0.5
 },
@@ -52,7 +52,7 @@
 },
 {
     "imgPath":["../assets/images/2-1.png","../assets/images/2-2.png","../assets/images/2-3.png","../assets/images/2-4.png"],    "title":"Possible Full Sleeve T-Shirt",
-    "prize":"700",
+    "prize":"800",
     "off":true,
     "offRange":0.5
 },
