@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   hideform1: string = '';
   hideform2: string = 'none';
   hideLoginLink:string='Login';
+  
 
   i: number;
   data: Array<any> = [];
@@ -38,10 +39,14 @@ export class HeaderComponent implements OnInit {
   }
   login() {
     this._loginservice.getData(this.localUser).subscribe(d => {
+
       if (d.found == "true") {
         console.log("login success");
         this.toggle=0;
         this.hideLoginLink='';
+
+        localStorage.setItem("username",this.localUser.username);
+       
       }
       else {
 
