@@ -28,7 +28,7 @@
         <ul class="nav navbar-nav">
 
           <li class="dropdown">
-            <a class="dropdown-toggle"  routerLink='women-page'>Women</a>
+            <a class="dropdown-toggle" routerLink='women-page'>Women</a>
             <ul class="dropdown-menu" data-toggle="dropdown">
               <div class="container">
                 <div class="row">
@@ -131,7 +131,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a class="dropdown-toggle"  href="#">Men</a>
+            <a class="dropdown-toggle" href="#">Men</a>
             <ul class="dropdown-menu" data-toggle="dropdown">
               <li>
                 <a href="#">Page 1-1</a>
@@ -145,7 +145,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a class="dropdown-toggle"  href="#">Mobile Cover</a>
+            <a class="dropdown-toggle" href="#">Mobile Cover</a>
             <ul class="dropdown-menu" data-toggle="dropdown">
               <li>
                 <a href="#">Page 1-1</a>
@@ -159,7 +159,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a class="dropdown-toggle"  href="#">Money Saver</a>
+            <a class="dropdown-toggle" href="#">Money Saver</a>
             <ul class="dropdown-menu" data-toggle="dropdown">
               <li>
                 <a href="#">Page 1-1</a>
@@ -188,33 +188,33 @@
                 <label></label>
 
               </div>
-              
+
 
             </form>
 
           </li>
-          <li class="hiden" *ngIf="this.toggle==1" > 
-            <a href="#" id="loginpage"  data-toggle="modal" data-target="#myModal">{{hideLoginLink}}
-              <span  class="glyphicon glyphicon-heart-empty"></span>
-              </a>
-          </li>
-          <li *ngIf="this.toggle==0" id="liItem" class="dropdown">
-                <span class="glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown" >   </span>  
-                <ul class="dropdown-menu" >
-                  <li><a href="">Hi, {{this.localUser.username}}</a></li>
-                  <li><a href="#"><b>My Account</b></a></li>
-                  <li><a href="#"><b>My Wishlist</b></a></li>
-                  <li><a href="#"><b>My Orders</b></a></li>
-                  <li><a href="#"><b>Logout</b></a></li>
-
-                </ul>
-           
-          
-          </li>
-          <li *ngIf="this.toggle==0">
-            <a href="#">
-               <span  class="glyphicon glyphicon-heart-empty"></span>
+          <li class="hiden " *ngIf="getLocalStorageName()==null">
+            <a href="#" id="loginpage" data-toggle="modal" data-target="#myModal">{{hideLoginLink}}
+              
              </a>
+          </li>
+          <li *ngIf="getLocalStorageName()!=null" id="liItem" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-user"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="">Hi, {{getLocalStorageName()}}</a></li>
+              <li><a href="#"><b>My Account</b></a></li>
+              <li><a href="#"><b>My Wishlist</b></a></li>
+              <li><a href="#"><b>My Orders</b></a></li>
+              <li><a href="#" (click)="logout()"><b>Logout</b></a></li>
+
+            </ul>
+
+
+          </li>
+          <li>
+            <a href=""><span class="glyphicon glyphicon-heart"></span></a>
           </li>
           <li>
             <a href="#">
@@ -248,105 +248,105 @@
                 </div>
               </div>
               <div class="modal-body">
-               
-                  <form id="form1" style.display={{hideform1}}> 
-                      <br>
-                      <br><br>
-                      <div class="row">
-                        <div class="col-md-3 centeralign">
-                            <div class="group">      
-                                <input type="text" required name="username" [(ngModel)]="localUser.username" >
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label>Email</label>
-                              </div>
-                              <div id="password" class="group">      
-                                <input style.display={{hidePass}} type="text" required name="password" [(ngModel)]="localUser.password" >
-                                <span class="highlight"></span>
-                                <span class="bar"></span>
-                                <label style.display={{hidePass}}>Password</label>
-                              </div>
-                              <button  type="Sumbit" style.display={{hideLogin}} id="Login" data-dismiss="modal" (click)='login();' class="btn btn-primary btn-lg">Login</button>
-                              <button  type="button" id="continue"  style.display={{hideCont}} (click)="hidePass='';hideLogin='';hideCont='none'" class="btn btn-primary btn-lg">Continue</button>
-                        </div>
-                    
+
+                <form id="form1" style.display={{hideform1}}>
+                  <br>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3 centeralign">
+                      <div class="group">
+                        <input type="text" required name="username" [(ngModel)]="localUser.username">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
                       </div>
-                   
-                      
-                    </form>
-                    <form id="form2" style.display={{hideform2}}> 
-                        <div class="row">
-                          <div class="col-md-3 centeralign">
-                              <div class="group">      
-                                  <input type="text" required  name="fullname" [(ngModel)]="localUser.fullname">
-                                  <span class="highlight"></span>
-                                  <span class="bar"></span>
-                                  <label>Full&nbsp;Name</label>
-                                </div>
-                          </div>
-                      
-                        </div>
-                     
-                          <div class="row">
-                              <div class="col-md-3 centeralign">
-                                  <div class="group">      
-                                      <input type="text" required name="username" [(ngModel)]="localUser.username">
-                                      <span class="highlight"></span>
-                                      <span class="bar"></span>
-                                      <label>Email Id</label>
-                                    </div>
-                              </div>
-                          
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 centeralign">
-                                    <div class="group">      
-                                        <input type="text" required name="password" [(ngModel)]="localUser.password">
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Password</label>
-                                      </div>
-                                </div>
-                            
-                              </div>
-                              <div class="row">
-                                  <div class="col-md-3 centeralign">
-                                      <div class="group">      
-                                          <input type="text" required name="mobile" [(ngModel)]="localUser.mobile">
-                                          <span class="highlight"></span>
-                                          <span class="bar"></span>
-                                          <label>Mobile</label>
-                                        </div>
-                                  </div>
-                              
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 centeralign">
-                                        <div class="group">      
-                                            <input type="text" required name="gender" [(ngModel)]="localUser.gender">
-                                            <span class="highlight"></span>
-                                            <span class="bar"></span>
-                                            <label>Gender</label>
-                                          </div>
-                                          <button  type="button" (click)="signUp()"class="btn btn-primary btn-lg">Sign Up</button>
-                                    </div>
-                                
-                                  </div>
-                                  
-                      </form>
-                           
-        
+                      <div id="password" class="group">
+                        <input style.display={{hidePass}} type="text" required name="password" [(ngModel)]="localUser.password">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label style.display={{hidePass}}>Password</label>
+                      </div>
+                      <button type="Sumbit" style.display={{hideLogin}} id="Login" data-dismiss="modal" (click)='login();' class="btn btn-primary btn-lg">Login</button>
+                      <button type="button" id="continue" style.display={{hideCont}} (click)="hidePass='';hideLogin='';hideCont='none'" class="btn btn-primary btn-lg">Continue</button>
+                    </div>
+
+                  </div>
+
+
+                </form>
+                <form id="form2" style.display={{hideform2}}>
+                  <div class="row">
+                    <div class="col-md-3 centeralign">
+                      <div class="group">
+                        <input type="text" required name="fullname" [(ngModel)]="localUser.fullname">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Full&nbsp;Name</label>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3 centeralign">
+                      <div class="group">
+                        <input type="text" required name="username" [(ngModel)]="localUser.username">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email Id</label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 centeralign">
+                      <div class="group">
+                        <input type="text" required name="password" [(ngModel)]="localUser.password">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 centeralign">
+                      <div class="group">
+                        <input type="text" required name="mobile" [(ngModel)]="localUser.mobile">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Mobile</label>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 centeralign">
+                      <div class="group">
+                        <input type="text" required name="gender" [(ngModel)]="localUser.gender">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Gender</label>
+                      </div>
+                      <button type="button" data-dismiss="modal" (click)="signUp()" class="btn btn-primary btn-lg">Sign Up</button>
+                    </div>
+
+                  </div>
+
+                </form>
+
+
 
 
 
 
               </div>
               <div class="modal-footer">
-               
+
                 <span>Or Login /Sign Up With</span><br><br>
-                  <button type="button" class="btn btn-primary">Facebook</button>
-                  <button type="button" class="btn btn-danger">Google</button>
-                  <h4>New User?<a href="#" (click)="hideform2='';hideform1='none'">Sign Up</a></h4>
+                <button type="button" class="btn btn-primary">Facebook</button>
+                <button type="button" class="btn btn-danger">Google</button>
+                <h4>New User?<a href="#" (click)="hideform2='';hideform1='none'">Sign Up</a></h4>
               </div>
             </div>
 
