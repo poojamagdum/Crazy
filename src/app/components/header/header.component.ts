@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
     mobile: '',
     gender: ''
   }
+  sessionUser:any;
   hideLogin: string = 'none';
   hideCont: string = '';
   hidePass: string = 'none';
@@ -39,28 +40,56 @@ export class HeaderComponent implements OnInit {
   }
   login() {
     this._loginservice.getData(this.localUser).subscribe(d => {
-
-      if (d.found == "true") {
+      if (d!=null) {
+      this.sessionUser=d;
+      
         console.log("login success");
         this.toggle=0;
         this.hideLoginLink='';
-
-        localStorage.setItem("username",this.localUser.username);
-       
+        
+        localStorage.setItem("localUsername",this.sessionUser.username);
+        
+        this.localUser = {
+          username: '',
+          password: '',
+          fullname: '',
+          mobile: '',
+          gender: ''
+        }
       }
       else {
-
-        console.log("login failure");
-      }
+        this.localUser = {
+          username: '',
+          password: '',
+          fullname: '',
+          mobile: '',
+          gender: ''
+        }
+        
+      } 
     })
+  }
+  getLocalStorageName():string{
+    return localStorage.getItem('localUsername')
   }
   signUp() {
     this._loginservice.putData(this.localUser).subscribe(res => {
       console.log("from post" + res);
       this.hideLoginmodal = "none";
+      
+      this.localUser = {
+        username: '',
+        password: '',
+        fullname: '',
+        mobile: '',
+        gender: ''
+      }
     })
   }
- 
+ logout(){
+   localStorage.removeItem('localUsername');
+   console.log(localStorage.getItem('localUsername'))
+ }
   ngOnInit() {
   }
 }

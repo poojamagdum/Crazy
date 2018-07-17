@@ -26,9 +26,9 @@ sup {
 
 #liItem.dropdown:hover .dropdown-menu  {
     display: block;
-  
+    position: fixed;
     top: 86px;
-    left: 1080px;
+    left: 1200px;
     width: 10%;
     min-height: 100px;
 }
@@ -90,11 +90,6 @@ th{
 
 .hiden{
     
-}
-
-.glyphicon.glyphicon-user{
-    top:20px;
-    right: 12px;
 }
 
 
