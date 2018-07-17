@@ -1,0 +1,17 @@
+
+ <div class="row">
+  <div class="col-sm-2">
+   
+<h5><b>FILTERS</b></h5>
+<ul  *ngFor="let p of sizes">
+  <li >
+    <a [routerLink]="['womendetails', p]">{{p}}</a>
+  </li>
+  
+</ul>
+
+</div>
+<div class="col-sm-10">
+  <router-outlet></router-outlet>
+</div>
+</div>

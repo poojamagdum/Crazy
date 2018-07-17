@@ -1,6 +1,7 @@
 import { WomenService } from './../../services/women-serv.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -12,7 +13,12 @@ export class WomenPageComponent implements OnInit {
 data:Array<any>=[];
 hideImg:string='none'
 imgOne:string;
-  constructor(private ws:WomenService) { 
+@Input() childvalue: string;
+private sub:any;
+sizes:any;
+
+constructor(private ws:WomenService,private activatedRoute:ActivatedRoute) { 
+ 
     if(this.data!=undefined)
     console.log("inside constructor")
     this.changeImage();
@@ -21,18 +27,24 @@ imgOne:string;
   
   
   ngOnInit() {
-    this.ws.getData().subscribe(d=>{
-      console.log("inside nginit",d)
-      if(d!=undefined)
-      this.data=d;
-    })
-    
+    this.sub = this.activatedRoute.params.subscribe(parameters =>{
+     
+      this.sizes=parameters['id'];
+      this.ws.getData(this.sizes).subscribe(d=>{
+        console.log("inside nginit",d)
+        if(d!=undefined)
+        this.data=d;
+      })
+   })
+
+   
+  
   }
   changeImage(){
     
     console.log(this.data.filter(i=>i.prize>700))
    }
-  ngAfterViewInit(){console.log(this.data)
+  ngAfterViewInit(){console.log(this.data);console.log(this.childvalue)
     var prev;
         $(document).ready(function(){
           $('img').hover(function(){
