@@ -9,15 +9,20 @@ export class WomenService{
   c:Array<any>;
   data:BehaviorSubject<any> = new BehaviorSubject(this.c);
   constructor(private http:HttpClient){      
-     this.http.get('http://127.0.0.1:3000/women').subscribe(d=>{
-        this.data.next(d);
-        
-      })
+     
    
   }
   
 
-  getData():Observable<any>{
-      return this.data.asObservable()
+  getData(sizes):Observable<any>{
+
+      return this.http.get('http://127.0.0.1:3000/women',{
+        params: {
+          size: '' + sizes,
+      
+        }
+      });
+  
   }
-  }
+
+}

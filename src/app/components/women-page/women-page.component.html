@@ -1,16 +1,16 @@
+
+
 <div class="container">
   <div class="row" style="text-align: center;">
     <h2>New Arrivals Men</h2>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
 
-    </div>
-    <div class="col-sm-10">
+ 
+    
       <div class="row">
         <div class="col-sm-4" *ngFor="let p of data;let i=index">
           <a href="" #in>
-           <!--  <img src="{{p.imgPath[0]}}" alt="" (mouseover)="hideImg=''" (mouseout)="hideImg='none'"> -->
+         
            <img src="{{p.imgPath[0]}}" alt=""> 
             <img src="{{p.imgPath[1]}}" id="{{'imgOne'+i}}" alt="" style.display={{hideImg}}>
           </a>
@@ -19,7 +19,8 @@
           <b>{{p.prize}}</b>
 
         </div>
-      </div>
+      </div> 
+      
+      <!-- <p>{{childvalue}}</p> -->
+      <p>{{sizes}}</p>
     </div>
-  </div>
-</div>

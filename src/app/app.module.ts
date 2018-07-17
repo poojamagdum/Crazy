@@ -12,6 +12,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { SectPageComponent } from './components/sect-page/sect-page.component';
 import { WomenPageComponent } from './components/women-page/women-page.component';
 import { LoginService } from './services/login-service.service';
+import { FiltersComponent } from './components/filters/filters.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 let routes:Routes=[
   {
@@ -19,8 +21,12 @@ let routes:Routes=[
     component:HomePageComponent
   },
   {
-    path:'women-page',
-    component:WomenPageComponent
+    path:'main-page',
+    component:MainPageComponent,
+    children:[{
+      path:'womendetails/:id',
+      component: WomenPageComponent
+    }]
   }
 ]
 
@@ -31,7 +37,9 @@ let routes:Routes=[
     HomePageComponent,
     FooterComponent,
     SectPageComponent,
-    WomenPageComponent
+    WomenPageComponent,
+    FiltersComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule, RouterModule.forRoot(routes), HttpClientModule, FormsModule
